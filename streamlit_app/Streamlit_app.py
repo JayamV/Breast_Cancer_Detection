@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 # Load the model and scaler
 def load_model():
-    with open('best_model.sav', 'rb') as file:
+    with open('streamlit_app/best_model.sav', 'rb') as file:
         loaded_model = pickle.load(file)
     model = loaded_model['model']  # Access the 'model' from the dictionary
     scaler = loaded_model['scaler']  # Access the 'scaler' from the dictionary
