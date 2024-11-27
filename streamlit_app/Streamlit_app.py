@@ -147,13 +147,13 @@ def main():
     ### About Breast Cancer
     Breast cancer is one of the most common types of cancer in women worldwide. Early detection and diagnosis are critical in improving survival rates. 
     """)
-    st.image("BCD.jpg", caption="Early detection saves lives.")
+    st.image("streamlit_app/BCD.jpg", caption="Early detection saves lives.")
 
     st.markdown(""" 
     ### About AdaBoost Classifier
     AdaBoost (Adaptive Boosting) is a powerful ensemble learning algorithm that combines multiple weak learners to create a strong classifier, enhancing the accuracy of predictions.
     """)
-    st.image("model.png", caption="Early detection saves lives.")
+    st.image("streamlit_app/model.png", caption="Early detection saves lives.")
 
     display_dataset_info()
     visualize_dataset_composition()
