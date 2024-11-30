@@ -144,27 +144,27 @@ def main():
 
     # Info about Breast Cancer and AdaBoost
     st.markdown(""" 
-    ### About Breast Cancer
+    ### 🎗️About Breast Cancer
     Breast cancer is one of the most common types of cancer in women worldwide. Early detection and diagnosis are critical in improving survival rates. 
     """)
     st.image("streamlit_app/BCD.jpg", caption="Types of Breast Cancer Cells")
 
     st.markdown(""" 
-    ### Why early detection of Breast Cancer is important?
-    #### Higher Survival Rates: 
+    ### 🎗️Why early detection of Breast Cancer is important?
+    #### 💪Higher Survival Rates: 
     Early detection increases the chances of successful treatment and long-term survival.
-    #### Less Aggressive Treatment:
+    #### 🌿Less Aggressive Treatment:
     Timely diagnosis often allows for simpler and less invasive treatment options.
-    #### Lower Risk of Metastasis: 
+    #### 🌐Lower Risk of Metastasis: 
     Identifying cancer early reduces the likelihood of it spreading to other parts of the body.
-    #### Reduced Healthcare Costs: 
+    #### 💰Reduced Healthcare Costs: 
     Early treatment is typically more cost-effective than managing advanced-stage cancer.
 
     """)
     st.image("streamlit_app/rate.png", caption="Early detection saves lives.")
 
     st.markdown(""" 
-    ### About AdaBoost Classifier
+    ### 🤖About AdaBoost Classifier
     AdaBoost (Adaptive Boosting) is a powerful ensemble learning algorithm that combines multiple weak learners to create a strong classifier, enhancing the accuracy of predictions.
     """)
     st.image("streamlit_app/model.png", caption="Early detection saves lives.")
