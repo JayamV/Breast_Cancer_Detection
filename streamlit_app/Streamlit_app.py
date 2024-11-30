@@ -109,6 +109,27 @@ def display_report(prediction, metrics):
     </div>
     """, unsafe_allow_html=True)
 
+# Add a developer column or footer
+def display_developer_info():
+    st.markdown(""" 
+    <style>
+    .developer-footer {
+        margin-top: 50px;
+        padding: 15px;
+        text-align: center;
+        font-size: 1rem;
+        background-color: #edf2f4;
+        border-top: 2px solid #023e8a;
+        color: #023e8a;
+        font-family: 'Arial', sans-serif;
+    }
+    </style>
+    <div class="developer-footer">
+        Developed by <strong>Jayam V</strong> | Contact: <a href="mailto:jayamwcc@gmail.com">jayamwcc@gmail.com</a> | GitHub: <a href="https://github.com/JayamV" target="_blank">JayamV</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+
 def main():
     model, scaler, metrics = load_model()
 
@@ -144,13 +165,13 @@ def main():
 
     # Info about Breast Cancer and AdaBoost
     st.markdown(""" 
-    ### 🎗️About Breast Cancer
+    ### About Breast Cancer
     Breast cancer is one of the most common types of cancer in women worldwide. Early detection and diagnosis are critical in improving survival rates. 
     """)
     st.image("streamlit_app/BCD.jpg", caption="Types of Breast Cancer Cells")
 
     st.markdown(""" 
-    ### 🎗️Why early detection of Breast Cancer is important?
+    ### Why early detection of Breast Cancer is important?
     #### 💪Higher Survival Rates: 
     Early detection increases the chances of successful treatment and long-term survival.
     #### 🌿Less Aggressive Treatment:
@@ -164,13 +185,15 @@ def main():
     st.image("streamlit_app/rate.png", caption="Early detection saves lives.")
 
     st.markdown(""" 
-    ### 🤖About AdaBoost Classifier
+    ### About AdaBoost Classifier
     AdaBoost (Adaptive Boosting) is a powerful ensemble learning algorithm that combines multiple weak learners to create a strong classifier, enhancing the accuracy of predictions.
     """)
     st.image("streamlit_app/model.png", caption="Early detection saves lives.")
 
     display_dataset_info()
     visualize_dataset_composition()
+
+    display_developer_info()
 
     input_array, features = get_user_input()
 
