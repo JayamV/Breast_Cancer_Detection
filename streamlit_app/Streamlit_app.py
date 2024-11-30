@@ -220,8 +220,6 @@ def main():
     display_dataset_info()
     visualize_dataset_composition()
 
-    display_developer_info()
-
     input_array, features = get_user_input()
 
     # Scale the input data using the loaded scaler
