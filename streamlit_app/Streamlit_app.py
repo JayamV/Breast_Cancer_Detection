@@ -57,7 +57,7 @@ def display_dataset_info():
 
 # Visualize dataset composition
 def visualize_dataset_composition():
-    st.markdown("### Dataset Composition")
+    st.markdown("### Trained Dataset Composition")
     benign_count = 357  # Example count
     malignant_count = 212  # Example count
 
