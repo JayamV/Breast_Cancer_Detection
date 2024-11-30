@@ -110,24 +110,51 @@ def display_report(prediction, metrics):
     """, unsafe_allow_html=True)
 
 # Add a developer column or footer
+# Add a stylish and creative developer section
 def display_developer_info():
     st.markdown(""" 
     <style>
     .developer-footer {
         margin-top: 50px;
-        padding: 15px;
+        padding: 20px;
         text-align: center;
-        font-size: 1rem;
-        background-color: #edf2f4;
-        border-top: 2px solid #023e8a;
-        color: #023e8a;
+        font-size: 1.1rem;
+        background: linear-gradient(135deg, #8ecae6, #023e8a);
+        color: white;
+        border-radius: 10px;
         font-family: 'Arial', sans-serif;
+    }
+    .developer-footer a {
+        color: #ffb703;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .developer-footer a:hover {
+        color: #ff8c00;
+    }
+    .developer-footer .social-icons {
+        margin-top: 10px;
+    }
+    .developer-footer .social-icons a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: white;
+    }
+    .developer-footer .social-icons a:hover {
+        color: #ffb703;
     }
     </style>
     <div class="developer-footer">
-        Developed by <strong>Jayam V</strong> | Contact: <a href="mailto:jayamwcc@gmail.com">jayamwcc@gmail.com</a> | GitHub: <a href="https://github.com/JayamV" target="_blank">JayamV</a>
+        <p>Developed with ❤️ by <strong>Jayam V</strong></p>
+        <p>Contact: <a href="mailto:jayamwcc@gmail.com">jayamwcc@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/JayamV" target="_blank">JayamV</a></p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/JayamV" target="_blank">🔗</a>
+            <a href="https://github.com/JayamV" target="_blank">🐱</a>
+        </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 
 def main():
