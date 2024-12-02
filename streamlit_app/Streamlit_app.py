@@ -116,11 +116,11 @@ def display_developers():
     st.markdown("<hr>", unsafe_allow_html=True)  # Horizontal line
     st.markdown("### Developer Team")
     developer_info = [
-        {"name": "Alice Johnson", "email": "alice.johnson@example.com"},
-        {"name": "Bob Smith", "email": "bob.smith@example.com"},
-        {"name": "Charlie Brown", "email": "charlie.brown@example.com"},
-        {"name": "Diana Green", "email": "diana.green@example.com"},
-        {"name": "Eve Adams", "email": "eve.adams@example.com"}
+        {"name": "Sayyed Nizar M", "email": "727723euai114@skcet.ac.in"},
+        {"name": "Bala Sairam Goli", "email": "balasairamgoli4@gmail.com"},
+        {"name": "Jayam V", "email": "jayamwcc@gmail.com"},
+        {"name": "A.V.K Sai Surya", "email": "avksaisurya77@gmail.com"},
+        {"name": "Shaik Moinuddin Chisty ", "email": "moinuddinchistyshaik@gmail.com"}
     ]
     
     cols = st.columns(5)  # Create 5 columns for the developers
