@@ -123,15 +123,13 @@ def display_developers():
         {"name": "Shaik Moinuddin Chisty ", "email": "moinuddinchistyshaik@gmail.com"}
     ]
     
-    cols = st.columns(5)  # Create 5 columns for the developers
-    for col, dev in zip(cols, developer_info):
-        with col:
-            st.markdown(f"""
-            <div style="text-align: center;">
-                <h4>{dev['name']}</h4>
-                <p>{dev['email']}</p>
-            </div>
-            """, unsafe_allow_html=True)
+    for dev in developer_info:
+        st.markdown(f"""
+        <div style="margin-bottom: 20px; padding: 10px; background-color: #f5f5f5; border-radius: 8px;">
+            <h4 style="margin: 0; color: #023e8a;">{dev['name']}</h4>
+            <p style="margin: 5px 0; color: #6c757d;">{dev['email']}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 def main():
     model, scaler, metrics = load_model()
