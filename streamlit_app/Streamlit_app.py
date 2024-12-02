@@ -205,7 +205,7 @@ def main():
         prediction = model.predict(scaled_input)
         display_report(prediction, metrics)  # Pass metrics to display the report
 
-  display_developers()
+    display_developers()
 
 
 if __name__ == "__main__":
