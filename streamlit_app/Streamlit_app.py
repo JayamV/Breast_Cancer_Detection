@@ -20,7 +20,7 @@ def train_model():
         'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst',
         'compactness_worst', 'concavity_worst', 'concave_points_worst', 'symmetry_worst', 'fractal_dimension_worst'
     ]
-    data = pd.read_csv(r"D:\JAYAM\INFOSYS\Datasets\breast+cancer+wisconsin+diagnostic\wdbc.data", header=None, names=columns)
+    data = pd.read_csv(r"https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data", header=None, names=columns)
 
     selected_features = [
         'Diagnosis', 'texture_worst', 'compactness_se', 'concavity_worst', 'concave_points_mean',
