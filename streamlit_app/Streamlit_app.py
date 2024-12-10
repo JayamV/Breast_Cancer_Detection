@@ -1,19 +1,72 @@
 import streamlit as st
-import numpy as np
-import pickle
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
-from math import pi
-from mpl_toolkits.mplot3d import Axes3D
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+from imblearn.over_sampling import SMOTE
 
-# Load the model and scaler
-def load_model():
-    with open('streamlit_app/best_model.sav', 'rb') as file:
-        loaded_model = pickle.load(file)
-    model = loaded_model['model']  # Access the 'model' from the dictionary
-    scaler = loaded_model['scaler']  # Access the 'scaler' from the dictionary
-    metrics = loaded_model.get('metrics', None)  # Access metrics if saved
-    return model, scaler, metrics
+
+# Function to train the model and return the trained model, scaler, and evaluation metrics
+def train_model():
+    # Load the dataset
+    columns = ['ID', 'Diagnosis'] + [
+        'radius_mean', 'texture_mean', 'perimeter_mean', 'area_mean', 'smoothness_mean', 'compactness_mean',
+        'concavity_mean', 'concave_points_mean', 'symmetry_mean', 'fractal_dimension_mean', 'radius_se', 'texture_se',
+        'perimeter_se', 'area_se', 'smoothness_se', 'compactness_se', 'concavity_se', 'concave_points_se', 'symmetry_se',
+        'fractal_dimension_se', 'radius_worst', 'texture_worst', 'perimeter_worst', 'area_worst', 'smoothness_worst',
+        'compactness_worst', 'concavity_worst', 'concave_points_worst', 'symmetry_worst', 'fractal_dimension_worst'
+    ]
+    data = pd.read_csv(r"D:\JAYAM\INFOSYS\Datasets\breast+cancer+wisconsin+diagnostic\wdbc.data", header=None, names=columns)
+
+    selected_features = [
+        'Diagnosis', 'texture_worst', 'compactness_se', 'concavity_worst', 'concave_points_mean',
+        'texture_mean', 'area_se', 'area_worst', 'perimeter_worst', 'radius_se',
+        'concave_points_worst', 'smoothness_worst', 'symmetry_worst', 'symmetry_se'
+    ]
+    data_selected = data[selected_features]
+    X = data_selected.drop(columns=['Diagnosis'])
+    y = data_selected['Diagnosis'].map({'B': 0, 'M': 1})
+
+    # Scale the features
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    # Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42)
+
+    # Apply SMOTE for class balancing
+    smote = SMOTE(random_state=42)
+    X_train_smote, y_train_smote = smote.fit_resample(X_train, y_train)
+
+    # Initialize AdaBoost
+    base_estimator = DecisionTreeClassifier(max_depth=1)
+    ada_boost = AdaBoostClassifier(estimator=base_estimator, random_state=42)
+
+    # Perform grid search for hyperparameter tuning
+    param_grid = {
+        'n_estimators': [50, 100, 150],
+        'learning_rate': [0.1, 0.5, 1.0]
+    }
+    grid_search = GridSearchCV(estimator=ada_boost, param_grid=param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+    grid_search.fit(X_train_smote, y_train_smote)
+
+    # Best model
+    best_model = grid_search.best_estimator_
+
+    # Evaluate the model
+    y_pred = best_model.predict(X_test)
+    metrics = {
+        "accuracy": accuracy_score(y_test, y_pred),
+        "precision": precision_score(y_test, y_pred),
+        "recall": recall_score(y_test, y_pred),
+        "f1_score": f1_score(y_test, y_pred)
+    }
+
+    return best_model, scaler, metrics
 
 # Sidebar text input for features
 def get_user_input():
@@ -131,8 +184,9 @@ def display_developers():
         </div>
         """, unsafe_allow_html=True)
 
+# Streamlit app logic
 def main():
-    model, scaler, metrics = load_model()
+    model, scaler, metrics = train_model()
 
     st.markdown(""" 
     <style>
@@ -208,3 +262,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    
