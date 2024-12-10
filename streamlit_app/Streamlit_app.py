@@ -150,6 +150,7 @@ def display_report(prediction, metrics):
 
     # Determine result
     result_class = "Benign (Non-cancerous)" if prediction[0] == 0 else "Malignant (Cancerous)"
+    
     result_color = "result-positive" if prediction[0] == 0 else "result-negative"
 
     # Display the result
